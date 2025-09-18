@@ -1,0 +1,9 @@
+/* Style your product review and rating system here */
+/* Define styles for product information, reviews, review forms, and rating stars */
+/* Example: */
+.star {
+    font-size: 24px;
+    color: #FFD700;
+    cursor: pointer;
+}
+/* Add more styles as needed */

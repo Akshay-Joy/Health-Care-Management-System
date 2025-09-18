@@ -1,0 +1,32 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%
+     String s=request.getParameter("email");
+     String s1=request.getParameter("password");      
+%>
+<%
+try{
+    Class.forName("com.mysql.jdbc.Driver");
+    
+    Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/sample","root","root");
+    
+    Statement st=con.createStatement();
+    
+    ResultSet rs=st.executeQuery("select * from user where email='"+s+"' and password='"+s1+"'");
+    if(rs.next())
+               {
+    response.sendRedirect("user--home.jsp");
+    }else
+               {
+    response.sendRedirect("user--log--fail.jsp");
+    }
+
+}catch(Exception e)
+               {
+e.printStackTrace();
+}
+%>
